@@ -1,8 +1,11 @@
-local polyZones = {
-    --[polyName] = polyZone
-}
+exports("boxZoneCreate", function(...)
+    return BoxZone:Create(...)
+end)
+exports("circleZoneCreate", function(...)
+    return CircleZone:Create(...)
+end)
 
-
+--[[
 exports("createPolyZone", function(polyName, polyType, polyData, debugPolyIn)
     if ( polyZones[polyName] ) then
         print("Replacing an existing zone")
@@ -25,5 +28,9 @@ exports("createPolyZone", function(polyName, polyType, polyData, debugPolyIn)
             scale = {polyData.scale.x, polyData.scale.y, polyData.scale.z},
             debugPoly = debugPolyIn,
         })
+    else
+        return print( ("Invalid polyType [%s]"):format(polyType) )
     end
+    return polyZones[polyName]
 end)
+]]
